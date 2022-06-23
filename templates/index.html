@@ -1,0 +1,28 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Webcam Stream</title>
+    </head>
+    <style>
+        * {
+            max-height: 100vh;
+        }
+        .image {
+            object-fit: cover;
+        }
+    </style>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8  offset-lg-2">
+                    <img src="{{ url_for('video_feed') }}" class="image" width="100%">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
