@@ -10,17 +10,19 @@
     </head>
     <style>
         * {
-            max-height: 100vh;
+            height: 100vh;
         }
-        .image {
-            object-fit: cover;
+        image {
+            display: block;
+            height: 100vh;
+            width: auto;
         }
     </style>
     <body>
         <div class="container">
             <div class="row">
                 <div class="col-lg-8  offset-lg-2">
-                    <img src="{{ url_for('video_feed') }}" class="image" width="100%">
+                    <img src="{{ url_for('video_feed') }}" class="image" height="100%">
                 </div>
             </div>
         </div>

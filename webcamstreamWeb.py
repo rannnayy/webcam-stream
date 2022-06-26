@@ -1,9 +1,10 @@
+from concurrent.futures import thread
 import cv2
 from flask import Flask, render_template, Response
 
 app = Flask(__name__)
 
-vc = cv2.VideoCapture(0)
+vc = cv2.VideoCapture(2)
 
 def gen_frames():  # generate frame by frame from camera
     while True:
@@ -31,4 +32,4 @@ def index():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000, debug = True)
+    app.run(host="0.0.0.0", port=5000, threaded = True)
