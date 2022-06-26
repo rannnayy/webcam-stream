@@ -1,19 +1,24 @@
-from concurrent.futures import thread
+import sys
+sys.path.append('/usr/include/opencv')
+
 import cv2
 from flask import Flask, render_template, Response
 
 app = Flask(__name__)
 
-vc = cv2.VideoCapture(2)
+# manager = Manager(app)
+
+vc = cv2.VideoCapture(-1)
 
 def gen_frames():  # generate frame by frame from camera
     while True:
         # Capture frame-by-frame
         rval, frame = vc.read()
-        # Vertical Line
-        cv2.line(frame, (int(frame.shape[1]/2), 0), (int(frame.shape[1]/2), frame.shape[0]), (0, 0, 255), 2, 1)
-        # Horizontal Line
-        cv2.line(frame, (int(frame.shape[0]/3), int(frame.shape[0]/2)), (int(frame.shape[0]), int(frame.shape[0]/2)), (0, 0, 255), 2, 1)
+        if frame != None:
+            # Vertical Line
+            cv2.line(frame, (int(frame.shape[1]/2), 0), (int(frame.shape[1]/2), frame.shape[0]), (0, 0, 255), 2, 1)
+            # Horizontal Line
+            cv2.line(frame, (int(frame.shape[0]/3), int(frame.shape[0]/2)), (int(frame.shape[0]), int(frame.shape[0]/2)), (0, 0, 255), 2, 1)
 
         if not rval:
             break
@@ -32,4 +37,5 @@ def index():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000, threaded = True)
+    app.run(host="0.0.0.0", port=8000, threaded = True)
+    # manager.run()

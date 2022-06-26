@@ -12,4 +12,10 @@
  Upon remote access using other device. It should be performed on devices connected on same network.
  Open 0.0.0.0:5000 or 192.168.0.8:5000, or you can also see the link prompted on terminal upon running server.
 
-## Note: if mobile version formatting doesn't suit the expected, contact me to be further adjusted 😃 
+pip2 install opencv-python==4.2.0.32
+
+# Using uWSGI Command Line
+uwsgi uwsgi.ini --socket 0.0.0.0:8000 --protocol=http --lazy -w wsgi:app
+
+# Using uWSGI Script
+uwsgi --ini uwsgi.ini
